@@ -88,7 +88,7 @@ def mostrarPrimos(n):
             if sumaT in numerosPrimos:
                 suma.append(primo)  
     return suma
-#print(mostrarPrimos(100000))
+#print(mostrarPrimos(100))
 #Ejercicio 5
 disp = {
 0 : [(0, 1), (5, 4), (7, 5)],
@@ -99,7 +99,7 @@ disp = {
 7 : [(0, 4), (1, 4), (2, 7)],
 8 : [(1, 9), (3, 8), (5, 7), (7, 6)]
 }
-def sumarValoresMatriz2(mat, lista):
+def sumarValoresMatriz(mat, lista):
   sum=0
   for i, j in lista:
     if i in mat:
@@ -107,4 +107,4 @@ def sumarValoresMatriz2(mat, lista):
           if j == k:
             sum= sum+a
   return sum
-#print(sumarValoresMatriz2(disp, [(0, 0), (8, 3), (3, 5), (7, 2), (4, 3), (4,6)]))
+#print(sumarValoresMatriz(disp, [(0, 0), (8, 3), (3, 5), (7, 2), (4, 3), (4,6)]))
