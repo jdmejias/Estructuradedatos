@@ -34,21 +34,26 @@ class BigInteger {
         if(vec1.empty() && bignumber.vec1.empty())
             ans=true;
 
-        return ans;
+        return ans; 
     }
-    bool operator<(BigInteger& bignumber){
-        bool ans=true;
-        int i =0;
-        if(bignumber.vec1.size()> vec1.size())
-            ans = false;
-        while (ans && i<vec1.size()){
-            if(vec1[i]<=bignumber.vec1[i])
-                ans=false;
+bool operator<(BigInteger& bignumber) {
+    bool result = false;
+    if (vec1.size() < bignumber.vec1.size()) {
+        result = true;
+    } else if (vec1.size() == bignumber.vec1.size()) {
+        int i = 0;
+        while (i < vec1.size() && vec1[i] == bignumber.vec1[i]) {
             i++;
-         }
-         return ans;
         }
-    };
+        if (i < vec1.size() && vec1[i] < bignumber.vec1[i]) {
+            result = true;
+        }
+    }
+
+    return result;
+}
+
+};
 int main() {
     string num1;
     string num2;
@@ -102,7 +107,7 @@ int main() {
             bool find = true;
             while (j >= 0 && find) {
                 if (temporal2[j] == '0') {
-                    temporal2.erase(j);
+                    temporal2.pop_back();
                 } else {
                     find = false;
                 }
@@ -113,7 +118,7 @@ int main() {
             find = true;
             while (j >= 0 && find) {
                 if (temporal4[j] == '0') {
-                    temporal4.erase(j);
+                    temporal4.pop_back();
                 } else {
                     find = false;
                 }
@@ -123,19 +128,25 @@ int main() {
             BigInteger numero2(temporal2);
             BigInteger numero3(temporal3);
             BigInteger numero4(temporal4);   
-            if (numero1 == numero3 && numero2 == numero4) 
+           if (numero1 == numero3 && numero2 == numero4) {
                 cout << "Case " << casos << ": Same" << endl;
+            }
             else if (numero1 == numero3) {
-                if (numero2 < numero4) 
+                if (numero2 < numero4) {
                     cout << "Case " << casos << ": Smaller" << endl;
-                else 
+                }
+                else {
                     cout << "Case " << casos << ": Bigger" << endl;
-            } 
-            else if (numero1 < numero3) 
-                cout << "Case " << casos << ": Bigger" << endl;
-             else 
+                }
+            }
+            else if (numero1 < numero3) {
                 cout << "Case " << casos << ": Smaller" << endl;
-        } 
+            }
+            else {
+                cout << "Case " << casos << ": Bigger" << endl;
+            }
+              
+        }
         casos++;
     }
     return 0;
